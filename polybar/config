@@ -148,6 +148,11 @@ ws-icon-1 = 2;龜
 ws-icon-2 = 3;
 ws-icon-3 = 4;>_
 ws-icon-4 = 5;>_
+ws-icon-5 = 6;>_
+ws-icon-6 = 7;>_
+ws-icon-7 = 8;>_
+ws-icon-8 = 9;>_
+ws-icon-9 = 0;
 
 label-mode-padding = 2
 label-mode-foreground = #000

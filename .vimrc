@@ -10,8 +10,6 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -35,16 +33,6 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 augroup END
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
-endif
-
 let mapleader=","
 
 set number
@@ -64,6 +52,9 @@ Plug 'danilo-augusto/vim-afterglow'
 
 "Color theme (Gotham)
 Plug 'whatyouhide/vim-gotham'
+
+"COlor theme (edge)
+Plug 'sainnhe/edge'
 
 "Status line
 Plug 'itchyny/lightline.vim'
@@ -90,7 +81,17 @@ call plug#end()
 "syntax off
 "
 set laststatus=2
-colorscheme afterglow 
+
+" important block for colorscheme
+set termguicolors
+
+" for dark version
+set background=dark
+
+" the configuration options should be placed before `colorscheme edge`
+let g:edge_style = 'neon'
+let g:edge_disable_italic_comment = 1
+colorscheme edge 
 
 "Nerdtree settings
 "autocmd vimenter * NERDTree
