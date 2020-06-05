@@ -149,7 +149,7 @@ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 
 #Homebrew ? (opencv installation)
 export PATH=/usr/local/bin:$PATH
-
+export PATH=$PATH:/Users/Max/geckodriver/
 #Java path
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home"
 

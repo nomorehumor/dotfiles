@@ -1,18 +1,4 @@
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings, bail
-" out.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
-
+" Some magic stuff to not to spoil the filesystem with tons of files
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -22,94 +8,100 @@ else
   endif
 endif
 
+set backupdir=~/.tmp
+
 if &t_Co > 2 || has("gui_running")
   " Switch on highlighting the last used search pattern.
   set hlsearch
 endif
 
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-augroup END
-
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
+" some syntax stuff
 if has('syntax') && has('eval')
   packadd! matchit
 endif
 
+" leader
 let mapleader=","
+noremap <Leader>y "*y
 
+" some settings and plugins
+filetype on
+filetype plugin on
+set hidden
+filetype plugin indent on
+set autoindent
 set number
 set incsearch
 set hls
+set nocompatible
+syntax enable
 
-set guifont=JetBrainsMono-Regular:h15
+set laststatus=2
+set shiftwidth=4
+"for mouse selection
+set mouse=a
 
 "Plugins
 call plug#begin('~/.vim/plugged')
 
-"Color theme (nord)
-Plug 'arcticicestudio/nord-vim'
-
-"Color theme (afterglow)
-Plug 'danilo-augusto/vim-afterglow'
-
-"Color theme (Gotham)
-Plug 'whatyouhide/vim-gotham'
+"Color theme (Onehalf)
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 "Status line
 Plug 'itchyny/lightline.vim'
 
-"File tree
-Plug 'preservim/nerdtree'
+Plug 'majutsushi/tagbar'          	" Class/module browser
+
+Plug 'preservim/nerdtree' "side bar
+
+Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
 
 "Commentaries
 Plug 'preservim/nerdcommenter'
 
-Plug 'ervandew/supertab'
+"Autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"Java
-Plug 'artur-shaik/vim-javacomplete2'
-
-"Python
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'tpope/vim-surround'
-Plug 'davidhalter/jedi-vim' " autocompletion
-
+"Git
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
-"syntax off
-"
-set laststatus=2
-colorscheme afterglow 
+set backspace=indent,eol,start
 
-"Nerdtree settings
-"autocmd vimenter * NERDTree
+"----------------------------UI-------------------------
+colorscheme onehalfdark
+" lightline theme (status bar)
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+let g:lightline.colorscheme='onehalfdark'
 
+" Font
+set guifont=JetBrainsMono-Regular:h15
+
+" nerdtree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-filetype plugin on
-filetype plugin indent on
-syntax on
-set autoindent
-set hidden
-set incsearch
+" tagbar settings 
+map <C-b> :TagbarToggle<CR>
+let g:tagbar_autofocus = 0 " автофокус на Tagbar при открытии
+
+
+
+"--------------------------filetypes-------------------------
+augroup vimrc_autocmds
+    autocmd!
+    autocmd FileType ruby,python,javascript,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
+    autocmd FileType ruby,python,javascript,c,cpp match Excess /\%80v.*/
+    autocmd FileType ruby,python,javascript,c,cpp set nowrap
+augroup END
+
+autocmd FileType python set completeopt-=preview " раскомментируйте, в случае, если не надо, чтобы jedi-vim показывал документацию по методу/классу
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+\ formatoptions+=croq softtabstop=4 smartindent
+\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-set shiftwidth=4
-
-" keybindings
-noremap <Leader>y "*y
-
-
