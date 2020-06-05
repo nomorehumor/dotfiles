@@ -47,6 +47,9 @@ call plug#begin('~/.vim/plugged')
 "Color theme (Onehalf)
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
+"COlor theme (edge)
+Plug 'sainnhe/edge'
+
 "Status line
 Plug 'itchyny/lightline.vim'
 
