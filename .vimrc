@@ -47,8 +47,11 @@ call plug#begin('~/.vim/plugged')
 "Color theme (Onehalf)
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
-"COlor theme (edge)
+"Color theme (edge)
 Plug 'sainnhe/edge'
+
+"color theme ayu
+Plug 'ayu-theme/ayu-vim'
 
 "Status line
 Plug 'itchyny/lightline.vim'
@@ -63,17 +66,23 @@ Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and mor
 Plug 'preservim/nerdcommenter'
 
 "Autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ycm-core/YouCompleteMe'
 
 "Git
 Plug 'airblade/vim-gitgutter'
 
+"File search
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 set backspace=indent,eol,start
 
 "----------------------------UI-------------------------
-colorscheme onehalfdark
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+"colorscheme onehalfdark
 " lightline theme (status bar)
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -108,3 +117,13 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" C++ IDE Settings
+set exrc
+set secure
+
+set colorcolumn=110
+highlight ColorColumn ctermbg=darkgray
+
+let &path.="src/include,/usr/include/AL,"
+
