@@ -24,7 +24,7 @@ endif
 let mapleader=","
 noremap <Leader>y "*y
 
-" some settings and plugins
+" some settings and defplugins
 filetype on
 filetype plugin on
 set hidden
@@ -41,6 +41,25 @@ set shiftwidth=4
 "for mouse selection
 set mouse=a
 
+"keys
+
+" brackets
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+
+inoremap "      ""<Left>
+inoremap ""     "
+
+inoremap ' 	''<Left>
+inoremap ''	'
+
+inoremap ( 	()<Left>
+
+map <C-w> :tabclose <CR>
+map <C-n> :tabnew <CR>
+
 "Plugins
 call plug#begin('~/.vim/plugged')
 
@@ -48,7 +67,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 "Color theme (edge)
-Plug 'sainnhe/edge'
+"Plug 'sainnhe/edge'
 
 "color theme ayu
 Plug 'ayu-theme/ayu-vim'
@@ -66,7 +85,6 @@ Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and mor
 Plug 'preservim/nerdcommenter'
 
 "Autocompletion
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ycm-core/YouCompleteMe'
 
 "Git
@@ -74,6 +92,17 @@ Plug 'airblade/vim-gitgutter'
 
 "File search
 Plug 'ctrlpvim/ctrlp.vim'
+
+"bookmarks
+Plug 'MattesGroeger/vim-bookmarks'
+
+" notes
+Plug 'xolox/vim-notes'
+
+" misc (needed for notes)
+Plug 'xolox/vim-misc'
+"insert new here
+
 call plug#end()
 
 set backspace=indent,eol,start
@@ -82,7 +111,7 @@ set backspace=indent,eol,start
 set termguicolors     " enable true colors support
 let ayucolor="dark"   " for dark version of theme
 colorscheme ayu
-"colorscheme onehalfdark
+
 " lightline theme (status bar)
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -93,11 +122,11 @@ let g:lightline.colorscheme='onehalfdark'
 set guifont=JetBrainsMono-Regular:h15
 
 " nerdtree
-map <C-n> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " tagbar settings 
-map <C-b> :TagbarToggle<CR>
+map <Leader>m :TagbarToggle<CR>
 let g:tagbar_autofocus = 0 " автофокус на Tagbar при открытии
 
 
@@ -118,6 +147,14 @@ autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 s
 
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
+" ctrlp settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 " C++ IDE Settings
 set exrc
 set secure
@@ -126,4 +163,6 @@ set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
 
 let &path.="src/include,/usr/include/AL,"
+
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 

@@ -2,6 +2,8 @@ source ".dotfiles/.zshrc_base"
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
+alias cs=$HOME/Desktop/csgorun/
+
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
