@@ -1,4 +1,4 @@
-source ".dotfiles/.zshrc_base"
+source "~/.dotfiles/.zshrc_base"
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
