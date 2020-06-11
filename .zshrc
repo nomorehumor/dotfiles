@@ -1,4 +1,4 @@
-source "~/.dotfiles/.zshrc_base"
+source "/Users/Max/.dotfiles/.zshrc_base"
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
@@ -25,3 +25,7 @@ export PATH=$PATH:/Users/Max/geckodriver/
 #Java path
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home"
 
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
