@@ -1,0 +1,43 @@
+source "$KITCAR_REPO_PATH/kitcar-init/scripts/check_ubuntu_version.sh"
+# show menu for qtcreator
+export QT_QPA_PLATFORMTHEME=
+
+# make qt applications view correct
+export QT_GRAPHICSSYSTEM=native
+
+# set ROS-specific shell variables
+case "$(check_ubuntu_version)" in
+  "xenial")
+    ROS_DISTRO="kinetic";
+    ;;
+  "bionic")
+    ROS_DISTRO="melodic";
+    ;;
+  *)
+    echo -e "\e[1;31m[WARNING] You are using a wrong version of Ubuntu (please use Xenial or Bionic)!\e[0m"
+esac
+source /opt/ros/$ROS_DISTRO/setup.zsh --extend
+source $KITCAR_REPO_PATH/kitcar-ros/KITcar_external/devel/setup.zsh --extend
+source $KITCAR_REPO_PATH/kitcar-ros/KITcar_brain/devel/setup.zsh --extend
+source $KITCAR_REPO_PATH/kitcar-ros/KITcar_debugger/devel/setup.zsh --extend
+source $KITCAR_REPO_PATH/kitcar-ros/KITcar_rqt/devel/setup.zsh --extend
+
+# to run tests local
+export CSV_OUTPUT="$KITCAR_REPO_PATH/kitcar-ros/KITcar_brain/build/test_results"
+export ROSBAG_PATH="/mrt/home/carolo/carolo-storage/Rosbags/integration_tests"
+
+alias kitcar_rosbag_play='rosrun kitcar rosbag_play.sh'
+alias kitcar_rosbag_record='rosrun kitcar rosbag_record.sh'
+
+# install dependencies
+alias kitcar_rosdep_install='rosdep update && rosdep install --from-paths $KITCAR_REPO_PATH/kitcar-ros --ignore-src --rosdistro $ROS_DISTRO -y --skip-keys="blas lapack"'
+
+# create a file for comments with time stamp. Usefull for bag tagging
+alias kitcar_write_time_stamp_coments='rosrun kitcar record_timestamp_comment.sh'
+
+# setze den Namen des Autos mit dem aktuell gearbeitet wird
+export CAR_NAME="dr_drift"
+
+# setze das Ausgabeformat für ROS
+export ROSCONSOLE_FORMAT='[${severity}] [${time}] [${node}]: ${message}'
+# export EDITOR='nano'

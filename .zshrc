@@ -1,27 +1,21 @@
-source ".dotfiles/.zshrc_base"
+source ~/.dotfiles/.zshrc_base
+source ~/.dotfiles/.zshrc_private_kitcar
+source ~/.dotfiles/.zshrc_kitcar
 
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+ZSH_THEME="agnoster"
+plugins=(git zsh-autosuggestions)
 
-alias cs=$HOME/Desktop/csgorun/
+stty intr ^y
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
+alias brain="cd ~/kitcar/kitcar-ros/KITcar_brain"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="/home/max/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# Virtualenvwrapper things
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-export VIRTUALENVWRAPPER_PYTHON="/Users/Max/.pyenv/shims/python"
-source /usr/local/bin/virtualenvwrapper.sh
-
-#mysql
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
-
-#Homebrew ? (opencv installation)
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:/Users/Max/geckodriver/
-#Java path
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-14.0.1.jdk/Contents/Home"
-
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
