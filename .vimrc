@@ -86,7 +86,6 @@ Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and mor
 Plug 'preservim/nerdcommenter'
 
 "Autocompletion
-"Plug 'ycm-core/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "Git
@@ -103,6 +102,12 @@ Plug 'xolox/vim-notes'
 
 " misc (needed for notes)
 Plug 'xolox/vim-misc'
+
+"C++ language features
+Plug 'prabirshrestha/vim-lsp'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'autozimu/LanguageClient-neovim' " LanguageClient-neovim
+
 "insert new here
 
 call plug#end()

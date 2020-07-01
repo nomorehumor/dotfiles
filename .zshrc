@@ -3,7 +3,7 @@ source "/Users/Max/.dotfiles/.zshrc_base"
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 alias cs=$HOME/Desktop/csgorun/
-
+alias john=/Users/Max/JohnTheRipper/run/./john
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
