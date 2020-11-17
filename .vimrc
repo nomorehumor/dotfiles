@@ -18,6 +18,7 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+nnoremap <silent> ´ :noh <CR>
 " some syntax stuff
 "if has('syntax') && has('eval')
   "packadd! matchit
@@ -38,30 +39,30 @@ filetype plugin indent on
 set autoindent
 set number
 set incsearch
-set hls
+"set hls
 set nocompatible
 syntax enable
 
 set laststatus=2
-set shiftwidth=4
+set shiftwidth=2
 "for mouse selection
 set mouse=a
 
 "keys
 
-" brackets
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+" brackets (currently managed by plugin)
+"inoremap {      {}<Left>
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap {{     {
+"inoremap {}     {}
 
-inoremap "      ""<Left>
-inoremap ""     "
+"inoremap "      ""<Left>
+"inoremap ""     "
 
-inoremap ' 	''<Left>
-inoremap ''	'
+"inoremap ' 	''<Left>
+"inoremap ''	'
 
-inoremap ( 	()<Left>
+"inoremap ( 	()<Left>
 
 map <C-w> :tabclose <CR>
 map <C-n> :tabnew <CR>
@@ -73,7 +74,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 "Color theme (edge)
-"Plug 'sainnhe/edge'
+Plug 'sainnhe/edge'
 
 "color theme ayu
 Plug 'ayu-theme/ayu-vim'
@@ -92,8 +93,10 @@ Plug 'preservim/nerdcommenter'
 
 "Autocompletion
 "Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+"Plug 'neoclide/coc-clangd', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 "Git
 Plug 'airblade/vim-gitgutter'
@@ -101,14 +104,26 @@ Plug 'airblade/vim-gitgutter'
 "File search
 Plug 'ctrlpvim/ctrlp.vim'
 
+"Undo tree
+Plug 'sjl/gundo.vim'
+
+"Move blocks of code
+Plug 'matze/vim-move'
+
+"Auto-pairs
+Plug 'jiangmiao/auto-pairs'
+
 "bookmarks
 Plug 'MattesGroeger/vim-bookmarks'
 
-" notes
-Plug 'xolox/vim-notes'
+"multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
+"notes
+"Plug 'xolox/vim-notes'
 
 " misc (needed for notes)
-Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-misc'
 "insert new here
 
 call plug#end()
@@ -135,11 +150,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " tagbar settings 
 map <Leader>m :TagbarToggle<CR>
-let g:tagbar_autofocus = 0 " автофокус на Tagbar при открытии
+let g:tagbar_autofocus = 1 " автофокус на Tagbar при открытии
 
 
 
 "--------------------------filetypes-------------------------
+"Commenter
+let g:NERDCustomDelimiters = { '.launch': { 'left': '<!--','right': '-->' } }
+
+
 augroup vimrc_autocmds
     autocmd!
     autocmd FileType ruby,python,javascript,c,cpp highlight Excess ctermbg=DarkGrey guibg=Black
@@ -248,6 +267,8 @@ function! s:show_documentation()
   endif
 endfunction
 
+nmap <silent> gh :CocCommand clangd.switchSourceHeader <cr>
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -323,3 +344,20 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+let g:lsp_cxx_hl_use_text_props = 1
+" Undo tree
+nnoremap <F2> :GundoToggle<CR>
+
+" multiple cursors bindings
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-k>'
+let g:multi_cursor_select_all_word_key = '<A-k>'
+let g:multi_cursor_start_key           = 'g<C-k>'
+let g:multi_cursor_select_all_key      = 'g<A-k>'
+let g:multi_cursor_next_key            = '<C-k>'
+let g:multi_cursor_prev_key            = '<C-j>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
