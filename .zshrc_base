@@ -41,7 +41,7 @@ export MYSQL_USER="root"
 export MYSQL_DB_NAME="docs"
 
 alias src="source ~/.zshrc"
-alias edit='nvim ~/.zshrc'
+alias rc='nvim ~/.zshrc'
 alias prog='cd ~/Desktop/Studium/Programmieren/'
 set -o vi
 alias vedit='nvim ~/.vimrc'

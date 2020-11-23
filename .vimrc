@@ -82,7 +82,9 @@ Plug 'preservim/nerdtree' "side bar
 
 Plug 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
 
-"Commentaries
+" move lines
+Plug 'matze/vim-move'
+
 Plug 'preservim/nerdcommenter'
 
 "Autocompletion
@@ -98,12 +100,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'MattesGroeger/vim-bookmarks'
 
 " notes
-Plug 'xolox/vim-notes'
+"Plug 'xolox/vim-notes'
 
 " misc (needed for notes)
-Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-misc'
 
 "C++ language features
+"Commentaries
 Plug 'prabirshrestha/vim-lsp'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'autozimu/LanguageClient-neovim' " LanguageClient-neovim
@@ -113,6 +116,9 @@ Plug 'autozimu/LanguageClient-neovim' " LanguageClient-neovim
 call plug#end()
 
 set backspace=indent,eol,start
+
+"-----------------------Navigation----------------------
+let g:move_key_modifier = 'C'
 
 "----------------------------UI-------------------------
 set termguicolors     " enable true colors support
