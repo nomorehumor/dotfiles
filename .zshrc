@@ -28,6 +28,14 @@ alias typo3="cd /var/www/dfgviewer_local/"
 #eval "$(pyenv virtualenv-init -)"
 export DOTFILES="~/.dotfiles"
 
+#osg 
+export PATH=${PATH}:/home/max/OpenSceneGraph/bin
+export PATH=${PATH}:/home/max/OpenSceneGraph/examples
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/max/OpenSceneGraph/lib
+export OSG_FILE_PATH=/home/max/OpenSceneGraph-Data:/home/max/OpenSceneGraph-Data/Images
+export OMP_THREAD_LIMIT=1
+
+
 #tesseract 
 #export PATH=$PATH:$HOME/local/bin
 

@@ -268,6 +268,7 @@ function! s:show_documentation()
 endfunction
 
 nmap <silent> gh :CocCommand clangd.switchSourceHeader <cr>
+nmap <silent> <leader> a :CocAction <cr>
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
