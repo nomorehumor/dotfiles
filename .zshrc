@@ -1,9 +1,9 @@
 source "/Users/Max/.dotfiles/.zshrc_base"
 
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+#source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 alias cs=$HOME/Desktop/csgorun/
-alias john=/Users/Max/JohnTheRipper/run/./john
+#alias john=/Users/Max/JohnTheRipper/run/./john
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -43,3 +43,4 @@ export PATH="${PATH}:${OSGHOME}/lib:${OSGHOME}/lib/osgPlugins-3.6.4"
 export DYLD_LIBRARY_PATH="${OSGHOME}/lib:${OSGHOME}/lib/osgPlugins-3.6.4"
 export OSG_FILE_PATH="$HOME/OpenSceneGraph-Data:$HOME/OpenSceneGraph-Data/Images"
 export PATH="/usr/local/opt/binutils/bin:$PATH"
+

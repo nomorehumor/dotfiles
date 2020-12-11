@@ -40,6 +40,7 @@ set laststatus=2
 set shiftwidth=4
 "for mouse selection
 set mouse=a
+set cursorline
 
 "keys
 
