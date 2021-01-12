@@ -31,6 +31,7 @@ export DOTFILES="~/.dotfiles"
 #osg 
 export PATH=${PATH}:/home/max/OpenSceneGraph/bin
 export PATH=${PATH}:/home/max/OpenSceneGraph/examples
+export PATH=${PATH}:/home/max/Qt/Tools/QtCreator/bin
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/max/OpenSceneGraph/lib
 export OSG_FILE_PATH=/home/max/OpenSceneGraph-Data:/home/max/OpenSceneGraph-Data/Images
 export OMP_THREAD_LIMIT=1
@@ -44,3 +45,8 @@ prompt_context() {
     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
   fi
 }
+
+
+#kitcar
+#export ROS_IP="10.10.0.XX"
+#export ROS_MASTER_URI="http://10.10.0.1:11311"

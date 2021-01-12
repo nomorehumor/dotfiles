@@ -210,7 +210,7 @@ type = internal/xbacklight
 format = <label> <bar>
 label = 
 
-bar-width = 5
+bar-width = 8
 bar-indicator = |
 bar-indicator-foreground = #fff
 bar-indicator-font = 1
@@ -305,10 +305,10 @@ label-volume-foreground = ${root.foreground}
 label-muted =  muted
 label-muted-foreground = #666
 ramp-volume-0 = 
-ramp-volume-1 = 
+ramp-volume-1 = 
 ramp-volume-2 = 
 
-bar-volume-width = 5
+bar-volume-width = 8
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55

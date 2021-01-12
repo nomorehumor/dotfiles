@@ -1,4 +1,3 @@
-" Some magic stuff to not to spoil the filesystem with tons of files
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -9,6 +8,7 @@ else
 endif
 
 
+let g:auto_save = 1  " enable AutoSave on Vim startup
 set backupdir=~/.tmp
 set undodir=~/.vim/undodir
 set undofile
@@ -27,8 +27,8 @@ nnoremap <silent> ´ :noh <CR>
 " leader
 let mapleader=","
 
-nnoremap  <leader>y  "+y
 vnoremap  <leader>y  "+y
+nnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
 
 " some settings and defplugins
@@ -38,6 +38,7 @@ set hidden
 filetype plugin indent on
 set autoindent
 set number
+set cursorline
 set incsearch
 "set hls
 set nocompatible
@@ -70,17 +71,20 @@ map <C-n> :tabnew <CR>
 "Plugins
 call plug#begin('~/.vim/plugged')
 
-"Color theme (Onehalf)
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
-"Color theme (edge)
-Plug 'sainnhe/edge'
-
-"color theme ayu
-Plug 'ayu-theme/ayu-vim'
+"Autosave
+Plug '907th/vim-auto-save'
 
 "Status line
 Plug 'itchyny/lightline.vim'
+
+"Color schemes 
+"Plug 'sonph/onehalf', {'rtp': 'vim/'}
+"Plug 'sainnhe/edge'
+"Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox'
+Plug 'shinchu/lightline-gruvbox.vim'
+
+
 
 Plug 'majutsushi/tagbar'          	" Class/module browser
 
@@ -117,7 +121,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'MattesGroeger/vim-bookmarks'
 
 "multiple cursors
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 "notes
 "Plug 'xolox/vim-notes'
@@ -133,13 +137,15 @@ set backspace=indent,eol,start
 "----------------------------UI-------------------------
 set termguicolors     " enable true colors support
 let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 
 " lightline theme (status bar)
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-let g:lightline.colorscheme='onehalfdark'
+"let g:lightline = {
+      "\ 'colorscheme': 'gruvbox',
+      "\ }
+let g:lightline = {}
+let g:lightline.colorscheme='gruvbox'
 
 " Font
 set guifont=JetBrainsMono-Regular:h15
@@ -268,7 +274,7 @@ function! s:show_documentation()
 endfunction
 
 nmap <silent> gh :CocCommand clangd.switchSourceHeader <cr>
-nmap <silent> <leader> a :CocAction <cr>
+nmap <silent> <leader>a :CocAction <cr>
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -351,14 +357,18 @@ let g:lsp_cxx_hl_use_text_props = 1
 nnoremap <F2> :GundoToggle<CR>
 
 " multiple cursors bindings
-let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_use_default_mapping=0
 
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-k>'
-let g:multi_cursor_select_all_word_key = '<A-k>'
-let g:multi_cursor_start_key           = 'g<C-k>'
-let g:multi_cursor_select_all_key      = 'g<A-k>'
-let g:multi_cursor_next_key            = '<C-k>'
-let g:multi_cursor_prev_key            = '<C-j>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+"" Default mapping
+"let g:multi_cursor_start_word_key      = '<C-k>'
+"let g:multi_cursor_select_all_word_key = '<A-k>'
+"let g:multi_cursor_start_key           = 'g<C-k>'
+"let g:multi_cursor_select_all_key      = 'g<A-k>'
+"let g:multi_cursor_next_key            = '<C-k>'
+"let g:multi_cursor_prev_key            = '<C-j>'
+"let g:multi_cursor_skip_key            = '<C-x>'
+"let g:multi_cursor_quit_key            = '<Esc>'
+
+" vim move
+let g:move_key_modifier = 'C'
+
