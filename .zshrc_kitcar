@@ -26,7 +26,7 @@ source $KITCAR_REPO_PATH/kitcar-ros/KITcar_rqt/devel/setup.zsh --extend
 export CSV_OUTPUT="$KITCAR_REPO_PATH/kitcar-ros/KITcar_brain/build/test_results"
 export ROSBAG_PATH="/mrt/home/carolo/carolo-storage/Rosbags/integration_tests"
 
-alias kitcar_rosbag_play='rosrun kitcar rosbag_play.sh'
+alias kitcar_rosbag_play='~/kitcar/kitcar-rosbag/src/kitcar_rosbag/scripts/play.sh'
 alias kitcar_rosbag_record='rosrun kitcar rosbag_record.sh'
 
 # install dependencies

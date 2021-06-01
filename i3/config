@@ -27,6 +27,7 @@ font pango:monospace 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+exec xmodmap ~/.Xmodmap
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -205,9 +206,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +5% && pactl set-sink-mute 0 0 #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +5% && pactl set-sink-volume 2 +5% && pactl set-sink-mute 0 0 #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMute exec "~/.config/i3/volume-mute"
+bindsym XF86AudioRaiseVolume exec "~/.config/i3/volume-up"
+bindsym XF86AudioLowerVolume exec "~/.config/i3/volume-down"
 
 # Sreen brightness controls
 bindsym XF86KbdBrightnessUp exec light -s sysfs/leds/smc::kbd_backlight -A 20
@@ -216,9 +220,21 @@ bindsym XF86KbdBrightnessDown exec light -s sysfs/leds/smc::kbd_backlight -U 10
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
+bindsym --release XF86LaunchA exec scrot -s ~/Pictures/$(date +%x-%X).png
 
 # languages
 bindsym Control+space exec "~/.config/i3/toggle-layout.sh" 
-
 #exec on system start
 exec "google-chrome"
+
+# second monitor settings
+# exec xrandr --dpi 276 --fb 6400x2160 --output eDP1 --mode 2560x1600 --output HDMI2 --scale 2x2 --pos 2560x0 --panning 3840x2160+2560+0
+#
+for_window [class=".*"] border pixel 0
+
+
+# GAPS CONFIG
+gaps right 0
+gaps inner 3
+smart_gaps on
+
