@@ -39,7 +39,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -dpi 177 -show drun -show-icons -config $HOME/.config/rofi/config.rasi
+bindsym $mod+d exec rofi -dpi 177 -show drun -show-icons -config $HOME/.config/rofi/launcher.rasi
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -196,7 +196,7 @@ bindsym $mod+minus mode "$fn_mode"
 exec --no-startup-id "feh --bg-scale ~/Pictures/backgrounds/lot_2046_60.jpg" 
 
 # Bar 
-exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
+exec_always --no-startup-id "$HOME/.config/polybar/launch.sh --grayblocks"
 
 
 # Media player controls
@@ -226,9 +226,10 @@ bindsym --release XF86LaunchA exec scrot -s ~/Pictures/$(date +%x-%X).png
 bindsym Control+space exec "~/.config/i3/toggle-layout.sh" 
 #exec on system start
 exec "google-chrome"
+exec --no-startup-id i3-msg "workspace $ws0; exec google-chrome https://webk.telegram.org/" 
 
 # second monitor settings
-# exec xrandr --dpi 276 --fb 6400x2160 --output eDP1 --mode 2560x1600 --output HDMI2 --scale 2x2 --pos 2560x0 --panning 3840x2160+2560+0
+exec xrandr --dpi 276 --fb 6400x2160 --output eDP1 --mode 2560x1600 --output HDMI2 --scale 2x2 --pos 2560x0 --panning 3840x2160+2560+0
 #
 for_window [class=".*"] border pixel 0
 
@@ -237,4 +238,3 @@ for_window [class=".*"] border pixel 0
 gaps right 0
 gaps inner 3
 smart_gaps on
-

@@ -1,5 +1,5 @@
 # if you have a different repo path export $KITCAR_REPO_PATH to correct path in ~/.bashrc before sourcing KITcars bashrc file
-[ -z "$KITCAR_REPO_PATH" ] && export KITCAR_REPO_PATH=$HOME/kitcar
+[ -z "$KITCAR_REPO_PATH" ] && export KITCAR_REPO_PATH=$HOME/ssd/kitcar
 
 #source installed QtCreator (hopefully the user installed it here, there is no way to tell the installer which directory to choose...)
 export PATH=$PATH:/opt/qtcreator-4.9.2/bin

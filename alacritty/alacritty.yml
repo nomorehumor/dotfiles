@@ -28,7 +28,7 @@
     #white: '#FFFFFF'
 
 
-# Colors (Gruvbox dark)
+#Colors (Gruvbox dark)
 colors:
   # Default colors
   primary:
@@ -60,6 +60,38 @@ colors:
     white:   '#ebdbb2'
 
 
+#Colors (Bear)
+colors:
+  # Default colors
+  primary:
+    # hard contrast: background = '#1d2021'
+    background: '#1f2023'
+    # soft contrast: background = '#32302f'
+    foreground: '#bcb28d'
+
+  # Normal colors
+  normal:
+    black:   '#2c5a65'
+    red:     '#E03C8A'
+    green:   '#24936e'
+    yellow:  '#e6844f'
+    blue:    '#58b2dc'
+    magenta: '#e03c8a'
+    cyan:    '#69b0ac'
+    white:   '#eee8d5'
+
+  # Bright colors
+  bright:
+    black:   '#666666'
+    red:     '#e6844f'
+    green:   '#5c8490'
+    yellow:  '#657b83'
+    blue:    '#58b2dc'
+    magenta: '#646695'
+    cyan:    '#93a1a1'
+    white:   '#fdf6e3'
+
+
 # Font configuration (changes require restart)
 font:
   # The size to use.
@@ -82,8 +114,8 @@ font:
     # Style can be specified to pick a specific face.
     style: Bold Italic
     
-key_bindings:
-  - { key: C,      mods: Control,     action: Copy             }
-  - { key: V,      mods: Control,     action: Paste            }
+#key_bindings:
+#  - { key: C,      mods: Control,     action: Copy             }
+#  - { key: V,      mods: Control,     action: Paste            }
 
 

@@ -80,7 +80,7 @@ Plug 'itchyny/lightline.vim'
 "Color schemes 
 "Plug 'sonph/onehalf', {'rtp': 'vim/'}
 "Plug 'sainnhe/edge'
-"Plug 'ayu-theme/ayu-vim'
+Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 
@@ -137,8 +137,8 @@ set backspace=indent,eol,start
 "----------------------------UI-------------------------
 set termguicolors     " enable true colors support
 let ayucolor="dark"   " for dark version of theme
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
+colorscheme ayu 
+let g:airline_theme='ayu'
 
 " lightline theme (status bar)
 "let g:lightline = {
@@ -372,3 +372,4 @@ nnoremap <F2> :GundoToggle<CR>
 " vim move
 let g:move_key_modifier = 'C'
 
+set textwidth=150
