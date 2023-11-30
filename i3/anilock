@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# alacritty -e lavat -c yellow -r 3 -s 7 -R 2 -k red  &
+/home/maxim/.config/i3/keycam &
+sleep 0.2
+i3-msg fullscreen
+i3lock -n
+killall keycam

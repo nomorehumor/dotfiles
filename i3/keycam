@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+
+# import keyboard
+from pynput.mouse import Listener
+from pynput import keyboard, mouse
+import os
+
+# def callbacatetime.datetime.now(), "pressed!")
+# k(self):
+    # print(d
+
+def take_photo(key):
+    os.system('fswebcam -S 3 --jpeg 50 --save /home/maxim/security_breaches/%H%M%S.jpg') 
+    return True  # stop listener; remove this if want more keys
+
+if __name__ == "__main__":
+    listener_keyboard = keyboard.Listener(on_press=take_photo)
+    listener_mouse = mouse.Listener(on_click=take_photo)
+    
+    listener_keyboard.start()  # start to listen on a separate thread
+    listener_mouse.start()
+    
+    listener_keyboard.join()  # remove if main thread is polling self.keys
+    listener_mouse.join()
